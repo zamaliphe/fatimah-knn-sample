@@ -1,5 +1,4 @@
 import operator
-from .distanceMetrics import distanceMetrics
 
 class kNNClassifier:
     '''
