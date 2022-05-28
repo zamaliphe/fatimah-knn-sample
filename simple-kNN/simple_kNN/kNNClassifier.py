@@ -39,16 +39,10 @@ class kNNClassifier:
         Output:
             k-nearest neighbors to the test data
         '''
-        
-        calcDM = distanceMetrics()
+
         distances = []
         for i, trainRow in enumerate(self.trainData):
-            if self.distanceMetric == 'euclidean':
-                distances.append([trainRow, calcDM.euclideanDistance(testRow, trainRow), self.trainLabels[i]])
-            elif self.distanceMetric == 'manhattan':
-                distances.append([trainRow, calcDM.manhattanDistance(testRow, trainRow), self.trainLabels[i]])
-            elif self.distanceMetric == 'hamming':
-                distances.append([trainRow, calcDM.hammingDistance(testRow, trainRow), self.trainLabels[i]])
+            distances.append([trainRow, self.euclideanDistance(testRow, trainRow), self.trainLabels[i]])
             distances.sort(key=operator.itemgetter(1))
 
         neighbors = []
@@ -78,3 +72,22 @@ class kNNClassifier:
             predictions.append(prediction)
         
         return predictions
+
+    def euclideanDistance(self, vector1, vector2):
+        '''
+        Description:
+            Function to calculate Euclidean Distance
+
+        Inputs:
+            vector1, vector2: input vectors for which the distance is to be calculated
+        Output:
+            Calculated euclidean distance of two vectors
+        '''
+        self.vectorA, self.vectorB = vector1, vector2
+        if len(self.vectorA) != len(self.vectorB):
+            raise ValueError("Undefined for sequences of unequal length.")
+        distance = 0.0
+        for i in range(len(self.vectorA) - 1):
+            distance += (self.vectorA[i] - self.vectorB[i]) ** 2
+        return (distance) ** 0.5
+
