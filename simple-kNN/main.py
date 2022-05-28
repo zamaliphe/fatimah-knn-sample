@@ -5,10 +5,8 @@ from random import randrange
 from sklearn import preprocessing
 from sklearn.metrics import classification_report
 from sklearn.metrics import confusion_matrix
-from simple_kNN.distanceMetrics import distanceMetrics
 from simple_kNN.kFoldCV import kFoldCV
 from simple_kNN.kNNClassifier import kNNClassifier
-from simple_kNN.datasets import load_iris
 
 def readData(fileName):
     '''
@@ -99,12 +97,6 @@ print('Hayes Roth Data')
 kfcv.kFCVEvaluate(trainFeatures, 10, 3, 'euclidean')
 
 
-
-kfcv.kFCVEvaluate(trainFeatures, 10, 3, 'manhattan')
-
-kfcv.kFCVEvaluate(trainFeatures, 10, 3, 'hamming')
-
-
 # ### Car Evaluation Data
 carFile = 'Datasets/CarEvaluation/car.data'
 
@@ -118,9 +110,6 @@ print('*'*20)
 print('Car Evaluation Data')
 kfcv.kFCVEvaluate(carFeatures, 10, 3, 'euclidean')
 
-kfcv.kFCVEvaluate(carFeatures, 10, 3, 'manhattan')
-
-kfcv.kFCVEvaluate(carFeatures, 10, 3, 'hamming')
 
 
 # ### Breast Cancer Data
@@ -135,11 +124,6 @@ cdf = cdf.apply(preprocessing.LabelEncoder().fit_transform)
 cancerFeatures = cdf.values.tolist()
 cancerLabels = [cancer[-1] for cancer in cancerFeatures]
 
-
 kfcv.kFCVEvaluate(cancerFeatures, 10, 3, 'euclidean')
 
-kfcv.kFCVEvaluate(cancerFeatures, 10, 3, 'manhattan')
-
-kfcv.kFCVEvaluate(cancerFeatures, 10, 3, 'hamming')
-
-
+print("Done")

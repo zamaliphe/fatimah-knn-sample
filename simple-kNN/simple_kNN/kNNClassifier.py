@@ -82,11 +82,11 @@ class kNNClassifier:
         Output:
             Calculated euclidean distance of two vectors
         '''
-        self.vectorA, self.vectorB = vector1, vector2
-        if len(self.vectorA) != len(self.vectorB):
+        vectorA, vectorB = vector1, vector2
+        if len(vectorA) != len(vectorB):
             raise ValueError("Undefined for sequences of unequal length.")
         distance = 0.0
-        for i in range(len(self.vectorA) - 1):
-            distance += (self.vectorA[i] - self.vectorB[i]) ** 2
+        for i in range(len(vectorA) - 1):
+            distance += (vectorA[i] - vectorB[i]) ** 2
         return (distance) ** 0.5
 
