@@ -38,7 +38,6 @@ def readDatawithoutkfcv(fileName):
 
 # HayesRoth Data
 
-print('***** Without KFold Cross Validation *****')
 trainFile = 'Datasets/HayesRoth/hayes-roth.data'
 
 trainData, trainLabel = readDatawithoutkfcv(trainFile)
@@ -63,13 +62,13 @@ for row in testData:
     temp = [int(item) for item in index]
     testFeatures.append(temp)
 
-testLabels = [int(label) for label in testLabel]
-eucPredictions = knn.predict(testFeatures, 3, 'euclidean')
-print('***** Confusion Matrix *****')
-print(confusion_matrix(testLabels, eucPredictions))
-# **Create an object for k-Fold cross validation class**
+# testLabels = [int(label) for label in testLabel]
+# eucPredictions = knn.predict(testFeatures, 3, 'euclidean')
+# print('***** Confusion Matrix *****')
+# print(confusion_matrix(testLabels, eucPredictions))
+# # **Create an object for k-Fold cross validation class**
 
-print('***** With KFold Cross Validation *****')
+# print('***** With KFold Cross Validation *****')
 trainData, trainLabel = readData(trainFile)
 
 trainFeatures = []

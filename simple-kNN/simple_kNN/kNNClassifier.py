@@ -131,7 +131,6 @@ class kNNClassifier:
         '''
         knn = kNNClassifier()
         folds = self.crossValSplit(dataset, numFolds)
-        print("\nDistance Metric: ", *args[-1])
         print('\n')
         scores = list()
         for fold in folds:
