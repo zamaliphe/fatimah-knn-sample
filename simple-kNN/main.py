@@ -40,7 +40,7 @@ def readDatawithoutkfcv(fileName):
         labels.append(splitline[-1])
     return data, labels
 
-# ### Hayes-Roth Data
+# HayesRoth Data
 
 print('***** Without KFold Cross Validation *****')
 trainFile = 'Datasets/HayesRoth/hayes-roth.data'
@@ -52,7 +52,7 @@ for row in trainData:
     index = row[0:]
     temp = [int(item) for item in index]
     trainFeatures.append(temp)
-    
+
 trainLabels = [int(label) for label in trainLabel]
 
 knn=kNNClassifier()
@@ -66,7 +66,7 @@ for row in testData:
     index = row[0:]
     temp = [int(item) for item in index]
     testFeatures.append(temp)
-    
+
 testLabels = [int(label) for label in testLabel]
 eucPredictions = knn.predict(testFeatures, 3, 'euclidean')
 print('***** Confusion Matrix *****')
@@ -81,49 +81,17 @@ for row in trainData:
     index = row[0:]
     temp = [int(item) for item in index]
     trainFeatures.append(temp)
-    
+
 trainLabels = [int(label) for label in trainLabel]
 kfcv = kFoldCV()
 
 
 # **Call the Evaluation function of kFCV class**
-#
 # *kfcv.kFCVEvaluate(data, foldCount, neighborCount, distanceMetric)*
 
 print('*'*20)
 print('Hayes Roth Data')
 
-
 kfcv.kFCVEvaluate(trainFeatures, 10, 3, 'euclidean')
-
-
-# ### Car Evaluation Data
-carFile = 'Datasets/CarEvaluation/car.data'
-
-carData, carLabel = readData(carFile)
-df = pd.DataFrame(carData)
-df = df.apply(preprocessing.LabelEncoder().fit_transform)
-carFeatures = df.values.tolist()
-carLabels = [car[-1] for car in carFeatures]
-
-print('*'*20)
-print('Car Evaluation Data')
-kfcv.kFCVEvaluate(carFeatures, 10, 3, 'euclidean')
-
-
-
-# ### Breast Cancer Data
-print('*'*20)
-print('Breast Cancer Data')
-
-cancerFile = 'Datasets/BreastCancer/breast-cancer.data'
-
-cancerData, cancerLabel = readData(cancerFile)
-cdf = pd.DataFrame(cancerData)
-cdf = cdf.apply(preprocessing.LabelEncoder().fit_transform)
-cancerFeatures = cdf.values.tolist()
-cancerLabels = [cancer[-1] for cancer in cancerFeatures]
-
-kfcv.kFCVEvaluate(cancerFeatures, 10, 3, 'euclidean')
 
 print("Done")
