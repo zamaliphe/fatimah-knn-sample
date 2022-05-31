@@ -1,11 +1,7 @@
 import numpy as np
 import pandas as pd
-import operator
-from random import randrange
-from sklearn import preprocessing
-from sklearn.metrics import classification_report
+
 from sklearn.metrics import confusion_matrix
-from simple_kNN.kFoldCV import kFoldCV
 from simple_kNN.kNNClassifier import kNNClassifier
 
 def readData(fileName):
@@ -83,15 +79,13 @@ for row in trainData:
     trainFeatures.append(temp)
 
 trainLabels = [int(label) for label in trainLabel]
-kfcv = kFoldCV()
 
 
-# **Call the Evaluation function of kFCV class**
-# *kfcv.kFCVEvaluate(data, foldCount, neighborCount, distanceMetric)*
+# **Call the kFCVEvaluate function of kNNClassifier class**
 
 print('*'*20)
 print('Hayes Roth Data')
 
-kfcv.kFCVEvaluate(trainFeatures, 10, 3, 'euclidean')
+knn.kFCVEvaluate(trainFeatures, 10, 3, 'euclidean')
 
 print("Done")
