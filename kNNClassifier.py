@@ -6,7 +6,7 @@ class kNNClassifier:
     Description:
         This class contains the functions to calculate distances
     '''
-    def __init__(self,k = 3, distanceMetric = 'euclidean'):
+    def __init__(self,k = 3):
         '''
         Description:
             KNearestNeighbors constructor
@@ -14,6 +14,7 @@ class kNNClassifier:
             k: total of neighbors. Defaulted to 3
             distanceMetric: type of distance metric to be used. Defaulted to euclidean distance.
         '''
+        self.distanceMetric = 'euclidean'
         pass
     
     def fit(self, xTrain, yTrain):
@@ -50,7 +51,7 @@ class kNNClassifier:
             neighbors.append(distances[index])
         return neighbors
         
-    def predict(self, xTest, k, distanceMetric):
+    def predict(self, xTest, k):
         '''
         Description:
             Apply kNN model on test data
@@ -63,7 +64,6 @@ class kNNClassifier:
         '''
         self.testData = xTest
         self.k = k
-        self.distanceMetric = distanceMetric
         predictions = []
         for i, testCase in enumerate(self.testData):
             neighbors = self.getNeighbors(testCase)
