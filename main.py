@@ -52,12 +52,10 @@ for row in trainData:
 
 trainLabels = [int(label) for label in trainLabel]
 
-
 # Call the kFCVEvaluate function of kNNClassifier class
 
-print('*'*20)
 print('Hayes Roth Data')
 
-knn.kFCVEvaluate(trainFeatures, 10, 3, 'euclidean')
+knn.kFCVEvaluate(trainFeatures, 10, 3)
 
 print("Done")
