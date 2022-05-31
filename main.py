@@ -1,6 +1,4 @@
-import numpy as np
-import pandas as pd
-from simple_kNN.kNNClassifier import kNNClassifier
+from kNNClassifier import kNNClassifier
 
 
 def readData(fileName):
